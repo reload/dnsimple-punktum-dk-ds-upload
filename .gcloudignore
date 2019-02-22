@@ -3,5 +3,6 @@
 /.gitignore
 /LICENSE
 /Makefile
+/README.md
 /env.yaml
 /test
