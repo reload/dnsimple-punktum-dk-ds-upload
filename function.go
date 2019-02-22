@@ -28,19 +28,30 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	name, err := webhook.ParseName(payload)
+
+	if err != nil {
+		log.Printf("Could not parse event name from payload: %s", err.Error())
+		http.Error(w, "Could not parse the event name", http.StatusBadRequest)
+
+		return
+	}
+
+	if name != "dnssec.rotation_complete" {
+		log.Printf("Not a `dnssec.rotation_complete` event: %s", name)
+		// It's OK that this is not the event we are looking
+		// for. We send a 200 OK so DNSimple will not retry.
+		http.Error(w, "Not a `dnssec.rotation_complete` event", http.StatusOK)
+
+		return
+	}
+
 	event := &webhook.DNSSECEvent{}
 	err = webhook.ParseDNSSECEvent(event, payload)
 
 	if err != nil {
 		log.Printf("Could not parse event as a DNSSEC event: %s", err.Error())
 		http.Error(w, "Could not parse event as a DNSSEC event", http.StatusBadRequest)
-
-		return
-	}
-
-	if event.Name != "dnssec.rotation_complete" {
-		log.Printf("Not a `dnssec.rotation_complete` event: %s", event.Name)
-		http.Error(w, "Not a `dnssec.rotation_complete` event", http.StatusUnprocessableEntity)
 
 		return
 	}
