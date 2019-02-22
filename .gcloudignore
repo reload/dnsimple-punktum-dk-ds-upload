@@ -1,6 +1,7 @@
 *~
 /.gcloudignore
 /.gitignore
+/LICENSE
 /Makefile
 /env.yaml
 /test
