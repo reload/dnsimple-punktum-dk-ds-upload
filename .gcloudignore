@@ -1,0 +1,6 @@
+*~
+/.gcloudignore
+/.gitignore
+/Makefile
+/env.yaml
+/test

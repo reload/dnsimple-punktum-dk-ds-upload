@@ -1,0 +1,32 @@
+{
+  "data": {
+    "dnssec": {
+      "enabled": true,
+      "created_at": "2017-07-19T18:52:55Z",
+      "updated_at": "2017-07-19T18:52:55Z"
+    },
+    "delegation_signer_record": {
+      "id": 7020,
+      "digest": "E174B66853D0DE1A4E391DFAE924695EB6BF12D28E1A68BDBDB44C4F0D325EA1",
+      "keytag": "43930",
+      "algorithm": "8",
+      "domain_id": 247964,
+      "created_at": "2018-12-07T12:00:00Z",
+      "updated_at": "2018-12-07T12:00:00Z",
+      "digest_type": "2"
+    }
+  },
+  "name": "dnssec.rotation_complete",
+  "actor": {
+    "id": "system",
+    "entity": "dnsimple",
+    "pretty": "support@dnsimple.com"
+  },
+  "account": {
+    "id": 123,
+    "display": "Personal",
+    "identifier": "foobar"
+  },
+  "api_version": "v2",
+  "request_identifier": "efae385b-2caa-4861-848a-55d0c5a72e26"
+}
