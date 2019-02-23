@@ -66,8 +66,11 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	config, err := getConfig(event.DelegationSignerRecord.DomainID)
 
 	if err != nil {
-		log.Printf("Config problem: %s", err.Error())
-		http.Error(w, "Missing DK Hostmaster credentials", http.StatusNotImplemented)
+		log.Printf("No DK Hostmaster config for %d: %s", event.DelegationSignerRecord.DomainID, err.Error())
+		// It's OK if there is no configuration. It could be a
+		// domain not handled by DK Hostmaster.and/or DNSSEC.
+		// We send a 200 OK so DNSimple will not retry.
+		http.Error(w, "Missing DK Hostmaster credentials", http.StatusOK)
 
 		return
 	}
