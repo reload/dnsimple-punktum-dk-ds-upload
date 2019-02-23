@@ -10,6 +10,11 @@ import (
 
 // Handle is the entrypoint for the Google Cloud Function.
 func Handle(w http.ResponseWriter, r *http.Request) {
+	// We log to Google Cloud Functions and don't need a timestamp
+	// since it will be present in the log anyway. On the other
+	// hand a reference to file and line number would be nice.
+	log.SetFlags(log.Lshortfile)
+
 	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 
 	if !isAuthorized(r.URL.Query().Get("token")) {
