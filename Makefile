@@ -1,8 +1,13 @@
-.PHONY: test deploy logs clean
+.PHONY: test deploy logs clean doc
 
 NAME=dnsimple-dk-hostmaster-ds-upload
 ENTRY_POINT=Handle
 REGION=europe-west1
+
+doc: README.md
+
+README.md: *.go .godocdown.tmpl
+	godocdown --output=README.md
 
 env.yaml:
 	lpass show 538627301036416249 --notes --quiet --color=never > $@
