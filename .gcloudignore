@@ -4,5 +4,6 @@
 /LICENSE
 /Makefile
 /README.md
+/env.example.yaml
 /env.yaml
 /test
