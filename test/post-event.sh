@@ -1,7 +1,7 @@
 #!/bin/bash
 
-TOKEN=$(sed -n -e '/^TOKEN:/ s/.*: *//p' "$(dirname "$0")/../env.yaml")
+TOKEN=$(yq read "$(dirname "$0")/../env.yaml" TOKEN)
 
-URL="https://europe-west1-reload-internal-alpha.cloudfunctions.net/dnsimple-dk-hostmaster-ds-upload?token={$TOKEN}"
+URL=$(gcloud functions describe dnsimple-dk-hostmaster-ds-upload --region=europe-west1 | yq read - httpsTrigger.url)
 
-curl -D - -X POST -H "Content-Type: application/json" -d "@$(dirname "$0")/dnssec.rotation_complete.json" "$URL"
+curl -D - -X POST -H "Content-Type: application/json" -d "@$(dirname "$0")/dnssec.rotation_complete.json" "${URL}?token=${TOKEN}"
