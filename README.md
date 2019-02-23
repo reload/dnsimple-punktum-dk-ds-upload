@@ -3,10 +3,6 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/reload/dnsimple-dk-hostmaster-ds-upload)](https://goreportcard.com/report/github.com/reload/dnsimple-dk-hostmaster-ds-upload)
 [![GoDoc](https://godoc.org/github.com/reload/dnsimple-dk-hostmaster-ds-upload?status.svg)](https://godoc.org/github.com/reload/dnsimple-dk-hostmaster-ds-upload)
 
-# function
---
-    import "github.com/reload/dnsimple-dk-hostmaster-ds-upload"
-
 Package function is a Google Cloud Function receiving webhook events from
 DNSimple (https://dnsimple.com/webhooks).
 
@@ -24,39 +20,10 @@ For the domains in your DNSimple account that you would like this cloud function
 to update in DK Hostmaster you need to add three environment variables. They
 should all be prefix with the Domain ID from DNSimple (e.g. 123456).
 
-- `123456_DOMAIN`: the (apex) domain name in DK Hostmaster - `123456_USERID`:
-the DK Hostmaster handle you use to login to their self service -
-`123456_PASSWORD`: the DK Hostmaster password you use to login to their self
-### service
+- `123456_DOMAIN`: the (apex) domain name in DK Hostmaster.
 
-## Usage
+- `123456_USERID`: the DK Hostmaster handle you use to login to their self
+service.
 
-```go
-const (
-	StatusUserIDNotSpecified                                   = 480
-	StatusPasswordNotSpecified                                 = 481
-	StatusMissingAParameter                                    = 482
-	StatusDomainNameNotSpecified                               = 483
-	StatusInvalidDomainName                                    = 484
-	StatusInvalidUserID                                        = 485
-	StatusInvalidDigestAndDigestTypeCombination                = 486
-	StatusTheContentsOfAtLeastOneParameterIsSyntacticallyWrong = 487
-	StatusAtLeastOneDSKeyHasAnInvalidAlgorithm                 = 488
-	StatusInvalidSequenceOfSets                                = 489
-	StatusUnknownParameterGiven                                = 495
-	StatusUnknownUserID                                        = 496
-	StatusUnknownDomainName                                    = 497
-	StatusAuthenticationFailed                                 = 531
-	StatusAuthorizationFailed                                  = 532
-	StatusAuthenticatingUsingThisPasswordTypeIsNotSupported    = 533
-)
-```
-DS Upload Sub-status codes. See:
-https://github.com/DK-Hostmaster/dsu-service-specification#http-sub-status-codes)
-
-#### func  Handle
-
-```go
-func Handle(w http.ResponseWriter, r *http.Request)
-```
-Handle is the entrypoint for the Google Cloud Function.
+- `123456_PASSWORD`: the DK Hostmaster password you use to login to their self
+service.
