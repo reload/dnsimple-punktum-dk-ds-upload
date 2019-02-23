@@ -1,4 +1,4 @@
-.PHONY: test deploy logs
+.PHONY: test deploy logs clean
 
 NAME=dnsimple-dk-hostmaster-ds-upload
 ENTRY_POINT=Handle
@@ -15,3 +15,6 @@ deploy: env.yaml test
 
 logs:
 	gcloud functions logs read $(NAME) --region=$(REGION)
+
+clean:
+	$(RM) env.yaml
