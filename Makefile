@@ -14,7 +14,7 @@ deploy: env.yaml test
 	gcloud functions deploy $(NAME) --entry-point=$(ENTRY_POINT) --runtime=go111 --trigger-http --memory=128M --region=$(REGION) --env-vars-file=env.yaml
 
 logs:
-	gcloud functions logs read $(NAME) --region=$(REGION)
+	gcloud functions logs read $(NAME) --region=$(REGION) --limit=100
 
 clean:
 	$(RM) env.yaml
