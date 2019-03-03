@@ -21,11 +21,13 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 
 	if !isAuthorized(r.URL.Query().Get("token")) {
 		http.Error(w, http.StatusText(http.StatusUnauthorized), http.StatusUnauthorized)
+
 		return
 	}
 
 	if r.Method != http.MethodPost {
 		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
+
 		return
 	}
 
@@ -33,18 +35,24 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	payload, err := ioutil.ReadAll(r.Body)
 
 	if err != nil {
+		log.Printf("Could not parse webhook payload: %s", err.Error())
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+
 		return
 	}
 
 	eventName, err := dnsimpleEventName(payload)
 
 	if err != nil {
+		log.Printf("Could not parse webhook name: %s", err.Error())
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
 	if eventName != "dnssec.rotation_start" && eventName != "dnssec.rotation_complete" {
+		log.Printf("Not a rotation event: %s", eventName)
+		// It's OK if this is not a DNSSEC rotation event. We
+		// send a 200 OK so DNSimple will not retry.
 		http.Error(w, "Not a rotation event", http.StatusOK)
 
 		return
@@ -53,6 +61,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	event, err := dnsimpleEvent(payload)
 
 	if err != nil {
+		log.Printf("Could not parse webhook DNSSEC rotation event: %s", err.Error())
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 
 		return
@@ -86,6 +95,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	dnsimpleToken, ok := os.LookupEnv("DNSIMPLE_TOKEN")
 
 	if !ok {
+		log.Printf("Missing DNSimple token")
 		http.Error(w, "Missing DNSimple token", http.StatusUnprocessableEntity)
 
 		return
@@ -122,5 +132,6 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	log.Printf("Successful update of DS records: %s", resp)
 	_, _ = w.Write(resp)
 }
