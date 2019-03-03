@@ -1,9 +1,13 @@
-*~
-/.gcloudignore
-/.gitignore
-/LICENSE
-/Makefile
-/README.md
-/env.example.yaml
-/env.yaml
-/test
+# Ignore everything by default.
+*
+
+# Explicitly allow go files.
+!*.go
+!go.mod
+!go.sum
+
+# No need to upload the documentation file.
+doc.go
+
+# Explicitly allow current dir. `gcloud deploy` fails without it.
+!.
