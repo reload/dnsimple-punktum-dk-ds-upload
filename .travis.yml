@@ -7,8 +7,6 @@ env:
   global:
     - GO111MODULE=on
 
-go_import_path: arnested.dk/go/dsupdate
-
 before_install:
   - GO111MODULE=off go get github.com/robertkrimen/godocdown/godocdown
   - GO111MODULE=off go get github.com/frapposelli/wwhrd
@@ -29,3 +27,17 @@ after_script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+deploy:
+  # Refresh godoc.org documentation
+  - provider: script
+    script: 'curl -sS -X POST -H "Content-Type: application/x-www-form-urlencoded" https://godoc.org/-/refresh --data "path=github.com%2Freload%2Fdnsimple-dk-hostmaster-ds-upload"'
+    on:
+      repo: reload/dnsimple-dk-hostmaster-ds-upload
+      branch: master
+  # Refresh goreportcard.com report and cached report card badge.
+  - provider: script
+    script: 'curl -sSL -X POST -H "Content-Type: application/x-www-form-urlencoded" https://goreportcard.com/checks --data "repo=github.com%2Freload%2Fdnsimple-dk-hostmaster-ds-upload"; curl -sSL -X PURGE https://camo.githubusercontent.com/8202ee41ef9af450d6ad0a19fb73744f9ca98a4a/68747470733a2f2f676f7265706f7274636172642e636f6d2f62616467652f6769746875622e636f6d2f72656c6f61642f646e73696d706c652d646b2d686f73746d61737465722d64732d75706c6f6164'
+    on:
+      repo: reload/dnsimple-dk-hostmaster-ds-upload
+      branch: master
