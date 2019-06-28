@@ -1,26 +1,33 @@
 package function
 
 import (
+	"fmt"
+
 	"github.com/dnsimple/dnsimple-go/dnsimple/webhook"
 )
 
 func dnsimpleEventName(payload []byte) (string, error) {
-	name, err := webhook.ParseName(payload)
+	event, err := webhook.ParseEvent(payload)
 
 	if err != nil {
 		return "", err
 	}
 
-	return name, nil
+	return event.Name, nil
 }
 
-func dnsimpleEvent(payload []byte) (*webhook.DNSSECEvent, error) {
-	event := &webhook.DNSSECEvent{}
-	err := webhook.ParseDNSSECEvent(event, payload)
+func dnsimpleEvent(payload []byte) (*webhook.DNSSECEventData, error) {
+	event, err := webhook.ParseEvent(payload)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return event, nil
+	dnssecEvent, ok := event.GetData().(*webhook.DNSSECEventData)
+
+	if !ok {
+		return nil, fmt.Errorf("Could not parse event as a DNSSEC event.")
+	}
+
+	return dnssecEvent, nil
 }
