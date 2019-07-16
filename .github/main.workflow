@@ -5,7 +5,13 @@ workflow "Build and Deploy" {
   ]
 }
 
+action "Is not a deleted branch" {
+  uses = "actions/bin/filter@master"
+  args = "not deleted"
+}
+
 action "Deploy branch filter" {
+  needs = "Is not a deleted branch"
   uses = "actions/bin/filter@master"
   args = "branch master"
 }
