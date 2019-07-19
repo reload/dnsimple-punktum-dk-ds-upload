@@ -5,7 +5,16 @@ workflow "Build and Deploy" {
   ]
 }
 
+action "Build and test" {
+  uses="cedrickring/golang-action/go1.11@master"
+  args = "go test -verbose -race -cover -covermode=atomic ./..."
+  env = {
+    GO111MODULE = "on"
+  }
+}
+
 action "Is not a deleted branch" {
+  needs = "Build and test"
   uses = "actions/bin/filter@master"
   args = "not deleted"
 }
