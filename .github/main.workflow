@@ -35,7 +35,7 @@ action "Deploy to Google Cloud Functions" {
   needs = ["Authenticate to Google Cloud"]
   uses = "actions/gcloud/cli@master"
   secrets = ["ENV_247964_DOMAIN", "ENV_247964_PASSWORD", "ENV_247964_USERID", "ENV_TOKEN", "ENV_DNSIMPLE_TOKEN"]
-  args = "functions deploy ${NAME} --project=${PROJECT} --entry-point=${ENTRY_POINT} --runtime=${RUNTIME} --trigger-http --memory=${MEMORY} --region=${REGION} --set-env-vars=247964_DOMAIN=${ENV_247964_DOMAIN},247964_PASSWORD=${ENV_247964_PASSWORD},247964_USERID=${ENV_247964_USERID},TOKEN=${ENV_TOKEN},DNSIMPLE_TOKEN=${ENV_DNSIMPLE_TOKEN}"
+  args = "functions deploy ${NAME} --project=${PROJECT} --entry-point=${ENTRY_POINT} --runtime=${RUNTIME} --trigger-http --memory=${MEMORY} --region=${REGION} --set-env-vars=247964_DOMAIN=${ENV_247964_DOMAIN},247964_PASSWORD=${ENV_247964_PASSWORD},247964_USERID=${ENV_247964_USERID},TOKEN=${ENV_TOKEN},DNSIMPLE_TOKEN=${ENV_DNSIMPLE_TOKEN} --format=disable"
   env = {
     NAME = "dnsimple-dk-hostmaster-ds-upload"
     PROJECT = "reload-internal-alpha"
