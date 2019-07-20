@@ -34,14 +34,11 @@ action "Authenticate to Google Cloud" {
 action "Deploy to Google Cloud Functions" {
   needs = ["Authenticate to Google Cloud"]
   uses = "actions/gcloud/cli@master"
-  secrets = ["ENV_247964_DOMAIN", "ENV_247964_PASSWORD", "ENV_247964_USERID", "ENV_TOKEN", "ENV_DNSIMPLE_TOKEN"]
-  args = "functions deploy ${NAME} --project=${PROJECT} --entry-point=${ENTRY_POINT} --runtime=${RUNTIME} --trigger-http --memory=${MEMORY} --region=${REGION} --format=disable"
+  secrets = ["CF_NAME", "CF_PROJECT", "CF_REGION"]
+  args = "functions deploy ${CF_NAME} --project=${CF_PROJECT} --region=${CF_REGION} --entry-point=${ENTRY_POINT} --runtime=${RUNTIME} --trigger-http --memory=${MEMORY} --format=disable"
   env = {
-    NAME = "dnsimple-dk-hostmaster-ds-upload"
-    PROJECT = "reload-internal-alpha"
     ENTRY_POINT = "Handle"
     RUNTIME = "go111"
-    REGION = "europe-west1"
     MEMORY = "128M"
   }
 }
