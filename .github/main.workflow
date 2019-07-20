@@ -35,7 +35,7 @@ action "Deploy to Google Cloud Functions" {
   needs = ["Authenticate to Google Cloud"]
   uses = "actions/gcloud/cli@master"
   secrets = ["CF_NAME", "CF_PROJECT", "CF_REGION"]
-  args = "functions deploy ${CF_NAME} --project=${CF_PROJECT} --region=${CF_REGION} --entry-point=${ENTRY_POINT} --runtime=${RUNTIME} --trigger-http --memory=${MEMORY} --format=disable"
+  args = "functions deploy ${CF_NAME} --project=${CF_PROJECT} --region=${CF_REGION} --entry-point=${ENTRY_POINT} --runtime=${RUNTIME} --trigger-http --memory=${MEMORY} --format=yaml(status,updateTime,versionId)"
   env = {
     ENTRY_POINT = "Handle"
     RUNTIME = "go111"
