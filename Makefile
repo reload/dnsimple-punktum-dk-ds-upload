@@ -1,9 +1,11 @@
-.PHONY: test deploy logs clean doc
+.PHONY: doc test check-env deploy logs
 
-NAME=dnsimple-dk-hostmaster-ds-upload
 ENTRY_POINT=Handle
-REGION=europe-west1
 RUNTIME=go111
+MEMORY=128M
+
+# Include a .env file if it exists (getting NAME, PROJECT, and REGION).
+-include .env
 
 export GO111MODULE=on
 
@@ -15,8 +17,13 @@ README.md: *.go .godocdown.tmpl
 test: *.go
 	go test ./...
 
-deploy: test
-	gcloud functions deploy $(NAME) --entry-point=$(ENTRY_POINT) --runtime=$(RUNTIME) --trigger-http --memory=128M --region=$(REGION)
+check-env:
+	@test -n "$(NAME)" || (echo "Missing environment variable NAME" ; false)
+	@test -n "$(PROJECT)" || (echo "Missing environment variable PROJECT" ; false)
+	@test -n "$(REGION)" || (echo "Missing environment variable REGION" ; false)
 
-logs:
-	gcloud functions logs read $(NAME) --region=$(REGION) --limit=100
+deploy: test check-env
+	gcloud functions deploy $(NAME) --project=$(PROJECT) --region=$(REGION) --entry-point=$(ENTRY_POINT) --runtime=$(RUNTIME) --trigger-http --memory=$(MEMORY)
+
+logs: check-env
+	gcloud functions logs read $(NAME) --project=$(PROJECT) --region=$(REGION) --limit=100
