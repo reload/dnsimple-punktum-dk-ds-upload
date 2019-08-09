@@ -13,16 +13,10 @@ action "Build and test" {
   }
 }
 
-action "Deploy filter: not a deleted branch" {
+action "Deploy filter: master branch" {
   needs = "Build and test"
   uses = "actions/bin/filter@master"
-  args = "not deleted"
-}
-
-action "Deploy filter: master branch" {
-  needs = "Deploy filter: not a deleted branch"
-  uses = "actions/bin/filter@master"
-  args = "branch master"
+  args = ["branch master", "not deleted"]
 }
 
 action "Authenticate to Google Cloud" {
