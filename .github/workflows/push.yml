@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_and_test
     steps:
+    - uses: actions/checkout@master
     - name: Authenticate to Google Cloud
       if: github.ref == 'refs/heads/master' && !github.deleted
       uses: actions/gcloud/auth@master
