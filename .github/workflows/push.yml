@@ -25,14 +25,7 @@ jobs:
     - name: Deploy to Google Cloud Functions
       if: github.ref == 'refs/heads/master' && !github.deleted
       uses: actions/gcloud/cli@master
-      env:
-        CF_NAME: ${{ secrets.CF_NAME }}
-        CF_PROJECT: ${{ secrets.CF_PROJECT }}
-        CF_REGION: ${{ secrets.CF_REGION }}
-        ENTRY_POINT: Handle
-        MEMORY: 128M
-        RUNTIME: go111
       with:
-        args: functions deploy ${CF_NAME} --project=${CF_PROJECT} --region=${CF_REGION}
-          --entry-point=${ENTRY_POINT} --runtime=${RUNTIME} --trigger-http --memory=${MEMORY}
+        args: functions deploy ${{secrets.CF_NAME}} --project=${{secrets.CF_PROJECT}} --region=${{secrets.CF_REGION}}
+          --entry-point=Handle --runtime=go111 --trigger-http --memory=128M
           --format='yaml(status,updateTime,versionId)'
