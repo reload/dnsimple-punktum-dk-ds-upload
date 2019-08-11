@@ -6,7 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+      if: '!github.event.deleted'
     - name: Build and test
+      if: '!github.event.deleted'
       uses: cedrickring/golang-action/go1.11@master
       env:
         GO111MODULE: "on"
