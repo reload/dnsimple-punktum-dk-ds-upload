@@ -18,6 +18,7 @@ jobs:
     needs: build_and_test
     steps:
     - uses: actions/checkout@master
+      if: github.ref == 'refs/heads/master' && !github.deleted
     - name: Authenticate to Google Cloud
       if: github.ref == 'refs/heads/master' && !github.deleted
       uses: actions/gcloud/auth@master
