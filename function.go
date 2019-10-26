@@ -40,7 +40,9 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	eventName, err := dnsimpleEventName(payload)
+	eventName, eventRequestID, err := dnsimpleEventInfo(payload)
+
+	log.Printf("Processing DNSimple event with request ID %q", eventRequestID)
 
 	if err != nil {
 		log.Printf("Could not parse webhook name: %s", err.Error())
