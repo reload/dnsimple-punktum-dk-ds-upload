@@ -6,14 +6,14 @@ import (
 	"github.com/dnsimple/dnsimple-go/dnsimple/webhook"
 )
 
-func dnsimpleEventName(payload []byte) (string, error) {
+func dnsimpleEventInfo(payload []byte) (string, string, error) {
 	event, err := webhook.ParseEvent(payload)
 
 	if err != nil {
-		return "", err
+		return "", "n/a", err
 	}
 
-	return event.Name, nil
+	return event.Name, event.RequestID, nil
 }
 
 func dnsimpleEvent(payload []byte) (*webhook.DNSSECEventData, error) {
