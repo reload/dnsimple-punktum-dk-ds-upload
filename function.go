@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"arnested.dk/go/dsupdate"
+	"github.com/dnsimple/dnsimple-go/dnsimple/webhook"
 )
 
 // Handle is the entrypoint for the Google Cloud Function.
@@ -40,9 +41,9 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	eventName, eventRequestID, err := dnsimpleEventInfo(payload)
+	event, err := webhook.ParseEvent(payload)
 
-	log.Printf("Processing DNSimple event with request ID %q", eventRequestID)
+	log.Printf("Processing DNSimple event with request ID %q", event.RequestID)
 
 	if err != nil {
 		log.Printf("Could not parse webhook name: %s", err.Error())
@@ -50,8 +51,8 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if eventName != "dnssec.rotation_start" && eventName != "dnssec.rotation_complete" {
-		log.Printf("Not a rotation event: %s", eventName)
+	if event.Name != "dnssec.rotation_start" && event.Name != "dnssec.rotation_complete" {
+		log.Printf("Not a rotation event: %s", event.Name)
 		// It's OK if this is not a DNSSEC rotation event. We
 		// send a 200 OK so DNSimple will not retry.
 		http.Error(w, "Not a rotation event", http.StatusOK)
@@ -59,19 +60,19 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	event, err := dnsimpleEvent(payload)
+	dnssecEvent, ok := event.GetData().(*webhook.DNSSECEventData)
 
-	if err != nil {
+	if !ok {
 		log.Printf("Could not parse webhook DNSSEC rotation event: %s", err.Error())
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 
 		return
 	}
 
-	config, err := getConfig(event.DelegationSignerRecord.DomainID)
+	config, err := getConfig(dnssecEvent.DelegationSignerRecord.DomainID)
 
 	if err != nil {
-		log.Printf("No DK Hostmaster / DNSimple config for %d: %s", event.DelegationSignerRecord.DomainID, err.Error())
+		log.Printf("No DK Hostmaster / DNSimple config for %d: %s", dnssecEvent.DelegationSignerRecord.DomainID, err.Error())
 		// It's OK if there is no configuration. It could be a
 		// domain not handled by DK Hostmaster and/or DNSSEC.
 		// We send a 200 OK so DNSimple will not retry.
