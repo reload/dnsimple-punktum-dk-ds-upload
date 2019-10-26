@@ -1,4 +1,4 @@
-.PHONY: doc test check-env deploy logs
+.PHONY: doc test check-env deploy logs post-fixture
 
 ENTRY_POINT=Handle
 RUNTIME=go111
@@ -27,3 +27,6 @@ deploy: test check-env
 
 logs: check-env
 	gcloud functions logs read $(NAME) --project=$(PROJECT) --region=$(REGION) --limit=100
+
+post-fixture: check-env
+	curl -D - -X POST -H "Content-Type: application/json" -d @test/dnssec.rotation_complete.json $(shell gcloud functions describe $(NAME) --project=$(PROJECT) --region=$(REGION) --format='get(httpsTrigger.url)')?token=$(TOKEN)
