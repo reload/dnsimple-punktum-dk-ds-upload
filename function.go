@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
 	"strconv"
 
 	"arnested.dk/go/dsupdate"
@@ -71,11 +70,11 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	config, err := getConfig(event.DelegationSignerRecord.DomainID)
 
 	if err != nil {
-		log.Printf("No DK Hostmaster config for %d: %s", event.DelegationSignerRecord.DomainID, err.Error())
+		log.Printf("No DK Hostmaster / DNSimple config for %d: %s", event.DelegationSignerRecord.DomainID, err.Error())
 		// It's OK if there is no configuration. It could be a
 		// domain not handled by DK Hostmaster and/or DNSSEC.
 		// We send a 200 OK so DNSimple will not retry.
-		http.Error(w, "Missing DK Hostmaster credentials config", http.StatusOK)
+		http.Error(w, "Missing DK Hostmaster / DNSimple credentials config", http.StatusOK)
 
 		return
 	}
@@ -86,16 +85,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		Password: config.Password,
 	}
 
-	dnsimpleToken, ok := os.LookupEnv("DNSIMPLE_TOKEN")
-
-	if !ok {
-		log.Printf("Missing DNSimple token")
-		http.Error(w, "Missing DNSimple token", http.StatusUnprocessableEntity)
-
-		return
-	}
-
-	records, err := dsRecords(dnsimpleToken, config.Domain)
+	records, err := dsRecords(config.DnsimpleToken, config.Domain)
 
 	if err != nil {
 		log.Printf("Could not get DS records from DNSimple: %s", err.Error())
