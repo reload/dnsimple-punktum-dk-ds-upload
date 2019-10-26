@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"strconv"
 
 	"arnested.dk/go/dsupdate"
 )
@@ -94,24 +93,9 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	dsRecords := []dsupdate.DsRecord{}
-
-	for _, record := range records {
-		keyTag, _ := strconv.ParseUint(record.Keytag, 10, 16)
-		algorithm, _ := strconv.ParseUint(record.Algorithm, 10, 8)
-		digestType, _ := strconv.ParseUint(record.DigestType, 10, 8)
-
-		dsRecords = append(dsRecords, dsupdate.DsRecord{
-			KeyTag:     uint16(keyTag),
-			Algorithm:  uint8(algorithm),
-			DigestType: uint8(digestType),
-			Digest:     record.Digest,
-		})
-	}
-
 	ctx := context.Background()
 
-	resp, err := client.Update(ctx, dsRecords)
+	resp, err := client.Update(ctx, records)
 
 	if err != nil {
 		log.Printf("Could not update DS records: %s", err.Error())

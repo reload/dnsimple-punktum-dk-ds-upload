@@ -4,11 +4,12 @@ import (
 	"context"
 	"strconv"
 
+	"arnested.dk/go/dsupdate"
 	"github.com/dnsimple/dnsimple-go/dnsimple"
 	"golang.org/x/oauth2"
 )
 
-func dsRecords(oauthToken string, domain string) ([]dnsimple.DelegationSignerRecord, error) {
+func dsRecords(oauthToken string, domain string) ([]dsupdate.DsRecord, error) {
 	ts := oauth2.StaticTokenSource(&oauth2.Token{AccessToken: oauthToken})
 	tc := oauth2.NewClient(context.Background(), ts)
 
@@ -34,5 +35,20 @@ func dsRecords(oauthToken string, domain string) ([]dnsimple.DelegationSignerRec
 		return nil, err
 	}
 
-	return dsRecords.Data, nil
+	records := []dsupdate.DsRecord{}
+
+	for _, record := range dsRecords.Data {
+		keyTag, _ := strconv.ParseUint(record.Keytag, 10, 16)
+		algorithm, _ := strconv.ParseUint(record.Algorithm, 10, 8)
+		digestType, _ := strconv.ParseUint(record.DigestType, 10, 8)
+
+		records = append(records, dsupdate.DsRecord{
+			KeyTag:     uint16(keyTag),
+			Algorithm:  uint8(algorithm),
+			DigestType: uint8(digestType),
+			Digest:     record.Digest,
+		})
+	}
+
+	return records, nil
 }
