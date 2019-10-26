@@ -1,6 +1,7 @@
 package function
 
 import (
+	"context"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -79,17 +80,10 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	client, err := dsupdate.New(dsupdate.Credentials{
+	client := dsupdate.Client{
 		Domain:   config.Domain,
 		UserID:   config.UserID,
 		Password: config.Password,
-	})
-
-	if err != nil {
-		log.Printf("Could not create DSUpdate object: %s", err.Error())
-		http.Error(w, "Could not create DSUpdate object", http.StatusInternalServerError)
-
-		return
 	}
 
 	dnsimpleToken, ok := os.LookupEnv("DNSIMPLE_TOKEN")
@@ -110,12 +104,14 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	dsRecords := []dsupdate.DsRecord{}
+
 	for _, record := range records {
 		keyTag, _ := strconv.ParseUint(record.Keytag, 10, 16)
 		algorithm, _ := strconv.ParseUint(record.Algorithm, 10, 8)
 		digestType, _ := strconv.ParseUint(record.DigestType, 10, 8)
 
-		client.Add(dsupdate.DsRecord{
+		dsRecords = append(dsRecords, dsupdate.DsRecord{
 			KeyTag:     uint16(keyTag),
 			Algorithm:  uint8(algorithm),
 			DigestType: uint8(digestType),
@@ -123,7 +119,9 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		})
 	}
 
-	resp, err := client.Post(http.Client{})
+	ctx := context.Background()
+
+	resp, err := client.Update(ctx, dsRecords)
 
 	if err != nil {
 		log.Printf("Could not update DS records: %s", err.Error())
