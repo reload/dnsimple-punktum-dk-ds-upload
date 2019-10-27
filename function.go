@@ -70,7 +70,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	config, err := getConfig(dnssecEvent.DelegationSignerRecord.DomainID)
+	config, err := envConfig(dnssecEvent.DelegationSignerRecord.DomainID)
 
 	if err != nil {
 		log.Printf("No DK Hostmaster / DNSimple config for %d: %s", dnssecEvent.DelegationSignerRecord.DomainID, err.Error())
