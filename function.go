@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
 
 	"arnested.dk/go/dsupdate"
 	"github.com/dnsimple/dnsimple-go/dnsimple/webhook"
@@ -96,7 +97,10 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	ctx := context.Background()
+	// We'll set a 50 second timeout in the deletion using the
+	// context package.
+	ctx, cancel := context.WithTimeout(context.Background(), 50*time.Second)
+	defer cancel()
 
 	resp, err := client.Update(ctx, records)
 
