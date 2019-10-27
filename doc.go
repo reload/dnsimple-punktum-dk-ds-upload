@@ -22,13 +22,15 @@ cloud function to update in DK Hostmaster you need to add three
 environment variables. They should all be prefix with the Domain ID
 from DNSimple (e.g. 123456).
 
-- `123456_DOMAIN`: the (apex) domain name in DK Hostmaster.
+`123456_DOMAIN`: the (apex) domain name in DK Hostmaster.
 
-- `123456_USERID`: the DK Hostmaster handle you use to login to their
+`123456_USERID`: the DK Hostmaster handle you use to login to their
 self service.
 
-- `123456_PASSWORD`: the DK Hostmaster password you use to login to
+`123456_PASSWORD`: the DK Hostmaster password you use to login to
 their self service.
 
 */
 package function
+
+//go:generate go run github.com/jimmyfrasche/autoreadme -f
