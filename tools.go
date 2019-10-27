@@ -1,6 +1,6 @@
 // +build tools
 
-package dsupdate
+package function
 
 import (
 	// Tools needed for generating readme and code.
