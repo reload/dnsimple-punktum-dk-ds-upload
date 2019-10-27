@@ -15,8 +15,8 @@ type config struct {
 	DnsimpleToken string `required:"true" envconfig:"DNSIMPLE_TOKEN"`
 }
 
-func getConfig(domainId int64) (config, error) {
-	domain := strconv.FormatInt(domainId, 10)
+func envConfig(domainID int64) (config, error) {
+	domain := strconv.FormatInt(domainID, 10)
 	config := config{}
 
 	err := envconfig.Process(domain, &config)
