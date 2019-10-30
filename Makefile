@@ -11,8 +11,8 @@ export GO111MODULE=on
 
 doc: README.md
 
-README.md: *.go .godocdown.tmpl
-	godocdown --output=README.md
+README.md: *.go README.md.template
+	go generate
 
 test: *.go
 	go test ./...

@@ -17,7 +17,7 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-  - make doc ; git diff --quiet # Check the docs are up to date
+  - go generate ; git diff --quiet # Check generated code/docs are up to date
   - go test -v -race -coverprofile=c.out -covermode=atomic ./...
   - ln c.out coverage.txt # Cover profile should be detected by both CodeClimate and CodeCov
   - go mod vendor && wwhrd check
