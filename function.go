@@ -2,12 +2,14 @@ package function
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
 
 	"arnested.dk/go/dsupdate"
+	"github.com/containrrr/shoutrrr"
 	"github.com/dnsimple/dnsimple-go/dnsimple/webhook"
 )
 
@@ -32,11 +34,15 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	services, _ := notifyConfig()
+	notify, _ := shoutrrr.CreateSender(services.Services...)
+
 	defer r.Body.Close()
 	payload, err := ioutil.ReadAll(r.Body)
 
 	if err != nil {
 		log.Printf("Could not parse webhook payload: %s", err.Error())
+		notify.Send(fmt.Sprintf("Could not parse webhook payload: %s", err.Error()), nil)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 
 		return
@@ -48,6 +54,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		log.Printf("Could not parse webhook name: %s", err.Error())
+		notify.Send(fmt.Sprintf("Could not parse webhook name: %s", err.Error()), nil)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
@@ -65,6 +72,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 
 	if !ok {
 		log.Printf("Could not parse webhook DNSSEC rotation event: %s", err.Error())
+		notify.Send(fmt.Sprintf("Could not parse webhook DNSSEC rotation event: %s", err.Error()), nil)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 
 		return
@@ -92,6 +100,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		log.Printf("Could not get DS records from DNSimple: %s", err.Error())
+		notify.Send(fmt.Sprintf("Could not get DS records from DNSimple: %s", err.Error()), nil)
 		http.Error(w, "Could not get DS records from DNSimple", http.StatusInternalServerError)
 
 		return
@@ -106,11 +115,13 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		log.Printf("Could not update DS records: %s", err.Error())
+		notify.Send(fmt.Sprintf("Could not update DS records: %s", err.Error()), nil)
 		http.Error(w, "Could not update DS records", http.StatusInternalServerError)
 
 		return
 	}
 
 	log.Printf("Successful update of DS records: %s", resp)
+	notify.Send(fmt.Sprintf("Successful update of DS records: %s", resp), nil)
 	_, _ = w.Write(resp)
 }
