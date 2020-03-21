@@ -27,5 +27,5 @@ jobs:
         version: '275.0.0'
         service_account_key: ${{ secrets.GCLOUD_AUTH }}
     - run: gcloud functions deploy ${{secrets.CF_NAME}} --project=${{secrets.CF_PROJECT}} --region=${{secrets.CF_REGION}}
-          --entry-point=Handle --runtime=go111 --trigger-http --memory=128M
+          --entry-point=Handle --runtime=go113 --trigger-http --memory=128M
           --format='yaml(status,updateTime,versionId)'
