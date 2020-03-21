@@ -13,4 +13,4 @@ require (
 	google.golang.org/appengine v1.6.5 // indirect
 )
 
-go 1.11
+go 1.13
