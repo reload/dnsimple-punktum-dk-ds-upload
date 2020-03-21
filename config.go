@@ -15,6 +15,10 @@ type config struct {
 	DnsimpleToken string `required:"true" envconfig:"DNSIMPLE_TOKEN"`
 }
 
+type notify struct {
+	Services []string `envconfig:"NOTIFY"`
+}
+
 func envConfig(domainID int64) (config, error) {
 	domain := strconv.FormatInt(domainID, 10)
 	config := config{}
@@ -22,4 +26,12 @@ func envConfig(domainID int64) (config, error) {
 	err := envconfig.Process(domain, &config)
 
 	return config, err
+}
+
+func notifyConfig() (notify, error) {
+	notify := notify{}
+
+	err := envconfig.Process("", &notify)
+
+	return notify, err
 }
