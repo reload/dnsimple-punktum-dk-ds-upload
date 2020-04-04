@@ -1,8 +1,8 @@
 arnested.dk/go/dsupdate v1.0.0 h1:1fsQnY7/8DQp+3xO9ZqQFK385ZeN3qHT8sywuEls3iQ=
 arnested.dk/go/dsupdate v1.0.0/go.mod h1:d2bK8l2Q970LDSlo5DFkA7J3XXfYTTkuF6MP3pGBMj0=
 cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
-github.com/containrrr/shoutrrr v0.0.0-20200308125025-1981b9ef7752 h1:g7iPN6gYedYNetNT7pdSO2jyZWyg9f7OqIVB4wOcEh4=
-github.com/containrrr/shoutrrr v0.0.0-20200308125025-1981b9ef7752/go.mod h1:eotQeC9bHbsf9eMUnXOU/y5bskegseWNB4PwmxRO7Wc=
+github.com/containrrr/shoutrrr v0.0.0-20200404180101-0365b48e39d9 h1:+iyESOTB+lDTw711BEmaf1uqZRcC6B5egYEvATT/oOQ=
+github.com/containrrr/shoutrrr v0.0.0-20200404180101-0365b48e39d9/go.mod h1:eotQeC9bHbsf9eMUnXOU/y5bskegseWNB4PwmxRO7Wc=
 github.com/dnsimple/dnsimple-go v0.31.0 h1:I1T+AxBQfhovyyfGSJ4CSUeH0iQejLArsUlhSQKw8WI=
 github.com/dnsimple/dnsimple-go v0.31.0/go.mod h1:O5TJ0/U6r7AfT8niYNlmohpLbCSG+c71tQlGr9SeGrg=
 github.com/fatih/color v1.7.0 h1:DkWD4oS2D8LGGgTQ6IvwJJXSL5Vp2ffcQg58nFV38Ys=
