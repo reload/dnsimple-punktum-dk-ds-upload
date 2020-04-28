@@ -5,6 +5,8 @@ github.com/containrrr/shoutrrr v0.0.0-20200404180101-0365b48e39d9 h1:+iyESOTB+lD
 github.com/containrrr/shoutrrr v0.0.0-20200404180101-0365b48e39d9/go.mod h1:eotQeC9bHbsf9eMUnXOU/y5bskegseWNB4PwmxRO7Wc=
 github.com/dnsimple/dnsimple-go v0.31.0 h1:I1T+AxBQfhovyyfGSJ4CSUeH0iQejLArsUlhSQKw8WI=
 github.com/dnsimple/dnsimple-go v0.31.0/go.mod h1:O5TJ0/U6r7AfT8niYNlmohpLbCSG+c71tQlGr9SeGrg=
+github.com/dnsimple/dnsimple-go v0.40.0 h1:a0yImJ9SzWTesA2jgIBsn5zBl47lrIcRyjA2CJqBmks=
+github.com/dnsimple/dnsimple-go v0.40.0/go.mod h1:O5TJ0/U6r7AfT8niYNlmohpLbCSG+c71tQlGr9SeGrg=
 github.com/fatih/color v1.7.0 h1:DkWD4oS2D8LGGgTQ6IvwJJXSL5Vp2ffcQg58nFV38Ys=
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/fsnotify/fsnotify v1.4.7 h1:IXs+QLmnXW2CcXuY+8Mzv/fWEsPGWxqefPtCP5CnV9I=
