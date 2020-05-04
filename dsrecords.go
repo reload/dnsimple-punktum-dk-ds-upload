@@ -10,14 +10,16 @@ import (
 )
 
 func dsRecords(oauthToken string, domain string) ([]dsupdate.DsRecord, error) {
+	ctx := context.Background()
+
 	ts := oauth2.StaticTokenSource(&oauth2.Token{AccessToken: oauthToken})
-	tc := oauth2.NewClient(context.Background(), ts)
+	tc := oauth2.NewClient(ctx, ts)
 
 	// new client
 	client := dnsimple.NewClient(tc)
 
 	// get the current authenticated account (if you don't know who you are)
-	whoamiResponse, err := client.Identity.Whoami()
+	whoamiResponse, err := client.Identity.Whoami(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -29,7 +31,7 @@ func dsRecords(oauthToken string, domain string) ([]dsupdate.DsRecord, error) {
 	// get the list of domains
 	// domainsResponse, err := client.Domains.ListDomains(accountID, nil)
 	//	domainsResponse, err := client.Domains.ListDomains(accountID, &dnsimple.DomainListOptions{NameLike: domain})
-	dsRecords, err := client.Domains.ListDelegationSignerRecords(accountID, domain, &dnsimple.ListOptions{})
+	dsRecords, err := client.Domains.ListDelegationSignerRecords(ctx, accountID, domain, &dnsimple.ListOptions{})
 
 	if err != nil {
 		return nil, err
