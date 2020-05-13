@@ -9,6 +9,8 @@ github.com/dnsimple/dnsimple-go v0.40.0 h1:a0yImJ9SzWTesA2jgIBsn5zBl47lrIcRyjA2C
 github.com/dnsimple/dnsimple-go v0.40.0/go.mod h1:O5TJ0/U6r7AfT8niYNlmohpLbCSG+c71tQlGr9SeGrg=
 github.com/dnsimple/dnsimple-go v0.60.0 h1:N+q+ML1CZGf+5r4udu9Opy7WJNtOaFT9aM86Af9gLhk=
 github.com/dnsimple/dnsimple-go v0.60.0/go.mod h1:O5TJ0/U6r7AfT8niYNlmohpLbCSG+c71tQlGr9SeGrg=
+github.com/dnsimple/dnsimple-go v0.61.0 h1:5BUN79+WLVM2gpGbK1/9SPVZfJPPcB83w7fBdshUXL4=
+github.com/dnsimple/dnsimple-go v0.61.0/go.mod h1:O5TJ0/U6r7AfT8niYNlmohpLbCSG+c71tQlGr9SeGrg=
 github.com/fatih/color v1.7.0 h1:DkWD4oS2D8LGGgTQ6IvwJJXSL5Vp2ffcQg58nFV38Ys=
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/fsnotify/fsnotify v1.4.7 h1:IXs+QLmnXW2CcXuY+8Mzv/fWEsPGWxqefPtCP5CnV9I=
