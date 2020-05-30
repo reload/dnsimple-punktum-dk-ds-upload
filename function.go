@@ -103,8 +103,8 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	records, err := dsRecords(config.DnsimpleToken, config.Domain)
 
 	if err != nil {
-		log.Printf("Could not get DS records from DNSimple: %s", err.Error())
-		notify.Send(fmt.Sprintf("Could not get DS records from DNSimple: %s", err.Error()), nil)
+		log.Printf("Could not get DS records from DNSimple for %q: %s", config.Domain, err.Error())
+		notify.Send(fmt.Sprintf("Could not get DS records from DNSimple for %q: %s", config.Domain, err.Error()), nil)
 		http.Error(w, "Could not get DS records from DNSimple", http.StatusInternalServerError)
 
 		return
@@ -118,14 +118,14 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	resp, err := client.Update(ctx, records)
 
 	if err != nil {
-		log.Printf("Could not update DS records: %s", err.Error())
-		notify.Send(fmt.Sprintf("Could not update DS records: %s", err.Error()), nil)
+		log.Printf("Could not update DS records for %q: %s", config.Domain, err.Error())
+		notify.Send(fmt.Sprintf("Could not update DS records for %q: %s", config.Domain, err.Error()), nil)
 		http.Error(w, "Could not update DS records", http.StatusInternalServerError)
 
 		return
 	}
 
-	log.Printf("Successful update of DS records: %s", resp)
-	notify.Send(fmt.Sprintf("Successful update of DS records: %s", resp), nil)
+	log.Printf("Successful update of DS records for %q: %s", config.Domain, resp)
+	notify.Send(fmt.Sprintf("Successful update of DS records for %q: %s", config.Domain, resp), nil)
 	_, _ = w.Write(resp)
 }
