@@ -35,7 +35,11 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	}
 
 	services, _ := notifyConfig()
-	notify, _ := shoutrrr.CreateSender(services.Services...)
+	notify, err := shoutrrr.CreateSender(services.Services...)
+
+	if err != nil {
+		log.Printf("Error creating notification sender(s): %s", err.Error())
+	}
 
 	defer r.Body.Close()
 	payload, err := ioutil.ReadAll(r.Body)
