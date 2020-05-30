@@ -14,3 +14,5 @@ require (
 )
 
 go 1.13
+
+replace github.com/containrrr/shoutrrr => github.com/arnested/shoutrrr v0.0.0-20200530123434-62b7202af636
