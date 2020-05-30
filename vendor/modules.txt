@@ -1,0 +1,102 @@
+# arnested.dk/go/dsupdate v1.0.0
+arnested.dk/go/dsupdate
+# github.com/containrrr/shoutrrr v0.0.0-20200404180101-0365b48e39d9 => github.com/arnested/shoutrrr v0.0.0-20200530123434-62b7202af636
+github.com/containrrr/shoutrrr
+github.com/containrrr/shoutrrr/internal/failures
+github.com/containrrr/shoutrrr/pkg/format
+github.com/containrrr/shoutrrr/pkg/router
+github.com/containrrr/shoutrrr/pkg/services/discord
+github.com/containrrr/shoutrrr/pkg/services/gotify
+github.com/containrrr/shoutrrr/pkg/services/hangouts
+github.com/containrrr/shoutrrr/pkg/services/ifttt
+github.com/containrrr/shoutrrr/pkg/services/logger
+github.com/containrrr/shoutrrr/pkg/services/mattermost
+github.com/containrrr/shoutrrr/pkg/services/pushbullet
+github.com/containrrr/shoutrrr/pkg/services/pushover
+github.com/containrrr/shoutrrr/pkg/services/slack
+github.com/containrrr/shoutrrr/pkg/services/smtp
+github.com/containrrr/shoutrrr/pkg/services/standard
+github.com/containrrr/shoutrrr/pkg/services/teams
+github.com/containrrr/shoutrrr/pkg/services/telegram
+github.com/containrrr/shoutrrr/pkg/services/zulip
+github.com/containrrr/shoutrrr/pkg/types
+github.com/containrrr/shoutrrr/pkg/util
+github.com/containrrr/shoutrrr/pkg/xmpp
+# github.com/dnsimple/dnsimple-go v0.63.0
+github.com/dnsimple/dnsimple-go/dnsimple
+github.com/dnsimple/dnsimple-go/dnsimple/webhook
+# github.com/fatih/color v1.7.0
+github.com/fatih/color
+# github.com/golang/protobuf v1.3.2
+github.com/golang/protobuf/proto
+# github.com/google/go-querystring v1.0.0
+github.com/google/go-querystring/query
+# github.com/hpcloud/tail v1.0.0
+github.com/hpcloud/tail
+github.com/hpcloud/tail/ratelimiter
+github.com/hpcloud/tail/util
+github.com/hpcloud/tail/watch
+github.com/hpcloud/tail/winfile
+# github.com/jimmyfrasche/autoreadme v0.0.0-20180503232641-58e67811d607
+github.com/jimmyfrasche/autoreadme
+# github.com/kelseyhightower/envconfig v1.4.0
+github.com/kelseyhightower/envconfig
+# github.com/mattn/go-colorable v0.1.2
+github.com/mattn/go-colorable
+# github.com/mattn/go-isatty v0.0.8
+github.com/mattn/go-isatty
+# github.com/onsi/ginkgo v1.8.0
+github.com/onsi/ginkgo
+github.com/onsi/ginkgo/config
+github.com/onsi/ginkgo/internal/codelocation
+github.com/onsi/ginkgo/internal/containernode
+github.com/onsi/ginkgo/internal/failer
+github.com/onsi/ginkgo/internal/leafnodes
+github.com/onsi/ginkgo/internal/remote
+github.com/onsi/ginkgo/internal/spec
+github.com/onsi/ginkgo/internal/spec_iterator
+github.com/onsi/ginkgo/internal/specrunner
+github.com/onsi/ginkgo/internal/suite
+github.com/onsi/ginkgo/internal/testingtproxy
+github.com/onsi/ginkgo/internal/writer
+github.com/onsi/ginkgo/reporters
+github.com/onsi/ginkgo/reporters/stenographer
+github.com/onsi/ginkgo/reporters/stenographer/support/go-colorable
+github.com/onsi/ginkgo/reporters/stenographer/support/go-isatty
+github.com/onsi/ginkgo/types
+# golang.org/x/net v0.0.0-20191116160921-f9c825593386
+golang.org/x/net/context
+golang.org/x/net/context/ctxhttp
+# golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
+golang.org/x/oauth2
+golang.org/x/oauth2/internal
+# golang.org/x/sys v0.0.0-20190222072716-a9d3bda3a223
+golang.org/x/sys/unix
+# golang.org/x/tools v0.0.0-20191116214431-80313e1ba718
+golang.org/x/tools/cmd/stringer
+golang.org/x/tools/go/gcexportdata
+golang.org/x/tools/go/internal/gcimporter
+golang.org/x/tools/go/internal/packagesdriver
+golang.org/x/tools/go/packages
+golang.org/x/tools/internal/fastwalk
+golang.org/x/tools/internal/gopathwalk
+golang.org/x/tools/internal/semver
+golang.org/x/tools/internal/span
+# golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+golang.org/x/xerrors
+golang.org/x/xerrors/internal
+# google.golang.org/appengine v1.6.5
+google.golang.org/appengine/internal
+google.golang.org/appengine/internal/base
+google.golang.org/appengine/internal/datastore
+google.golang.org/appengine/internal/log
+google.golang.org/appengine/internal/remote_api
+google.golang.org/appengine/internal/urlfetch
+google.golang.org/appengine/urlfetch
+# gopkg.in/fsnotify.v1 v1.4.7
+gopkg.in/fsnotify.v1
+# gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7
+gopkg.in/tomb.v1
+# gosrc.io/xmpp v0.1.1
+gosrc.io/xmpp
+gosrc.io/xmpp/stanza
