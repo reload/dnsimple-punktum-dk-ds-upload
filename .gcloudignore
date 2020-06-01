@@ -3,7 +3,8 @@
 
 # Explicitly allow go files.
 !*.go
-!vendor/**
+!go.mod
+!go.sum
 
 # No need to upload the documentation file.
 doc.go
