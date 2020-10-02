@@ -2,6 +2,7 @@ package function
 
 import (
 	"context"
+	"errors"
 	"strconv"
 
 	"arnested.dk/go/dsupdate"
@@ -32,9 +33,12 @@ func dsRecords(oauthToken string, domain string) ([]dsupdate.DsRecord, error) {
 	// domainsResponse, err := client.Domains.ListDomains(accountID, nil)
 	//	domainsResponse, err := client.Domains.ListDomains(accountID, &dnsimple.DomainListOptions{NameLike: domain})
 	dsRecords, err := client.Domains.ListDelegationSignerRecords(ctx, accountID, domain, &dnsimple.ListOptions{})
-
 	if err != nil {
 		return nil, err
+	}
+
+	if len(dsRecords.Data) < 1 {
+		return nil, errors.New("No DS records found")
 	}
 
 	records := []dsupdate.DsRecord{}
