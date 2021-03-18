@@ -1,5 +1,5 @@
-arnested.dk/go/dsupdate v1.0.11 h1:A0G/5vEUn3Ch6gZP5p7xIZMIIFKcxW9qjcoA49RCFg8=
-arnested.dk/go/dsupdate v1.0.11/go.mod h1:LNcR66DBw53+SOkssIJrzfbmRlECWT+EkS6cBWOo/o8=
+arnested.dk/go/dsupdate v1.0.12 h1:41WQtu64wGRwBI0Ees9Hv3UG5U6s2CGFGONgIzDfeRE=
+arnested.dk/go/dsupdate v1.0.12/go.mod h1:LNcR66DBw53+SOkssIJrzfbmRlECWT+EkS6cBWOo/o8=
 cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/containrrr/shoutrrr v0.0.0-20200601130819-941635456201 h1:4msSLyv018POHrIpJf+V5wKtaVivW/HzFzsKNk7jZXI=
 github.com/containrrr/shoutrrr v0.0.0-20200601130819-941635456201/go.mod h1:eotQeC9bHbsf9eMUnXOU/y5bskegseWNB4PwmxRO7Wc=
@@ -56,7 +56,6 @@ golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/text v0.3.2 h1:tW2bmiBqwgJj/UpqtC8EpXEZVYOwU0yG4iWbprSVAcs=
 golang.org/x/text v0.3.2/go.mod h1:bEr9sfX3Q8Zfm5fL9x+3itogRgK3+ptLWKqgva+5dAk=
 golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
-golang.org/x/tools v0.0.0-20191026034945-b2104f82a97d h1:QFO0Wgcqcp8nI9hbisKDTBsmfwrvLswk2T73QDZZgVo=
 golang.org/x/tools v0.0.0-20191026034945-b2104f82a97d/go.mod h1:b+2E5dAYhXwXZwtnZ6UAqBI28+e2cm9otk0dWdXHAEo=
 golang.org/x/tools v0.0.0-20191116214431-80313e1ba718 h1:cWviR33VVbwok1/RNvFm9XHNcdJCsaSocBflkEXrIdo=
 golang.org/x/tools v0.0.0-20191116214431-80313e1ba718/go.mod h1:b+2E5dAYhXwXZwtnZ6UAqBI28+e2cm9otk0dWdXHAEo=
