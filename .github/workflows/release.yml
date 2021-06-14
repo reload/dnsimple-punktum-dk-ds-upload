@@ -1,0 +1,26 @@
+name: Release
+on:
+  workflow_run:
+    workflows: ["Build and test"]
+    branches: [main]
+    types:
+      - completed
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: '275.0.0'
+        service_account_key: ${{ secrets.GCLOUD_AUTH }}
+    - run: gcloud functions deploy ${{ secrets.CF_NAME }} --project=${{ secrets.CF_PROJECT }} --region=${{ secrets.CF_REGION }}
+          --entry-point=Handle --runtime=go113 --trigger-http --memory=128M
+          --format='yaml(status,updateTime,versionId)'
+    - name: Post status to Zulip
+      if: ${{ always() }}
+      uses: containrrr/shoutrrr-action@v1
+      with:
+        url: ${{ secrets.ZULIP_SHOUTRRR_URL }}?stream=logs%topic=dnssec
+        message: 'Deployed ${{ github.repository }}@${{ github.sha }} to Google Cloud Function ${{ secrets.CF_NAME }}@${{ secrets.CF_PROJECT }}: ${{ job.status }}.'
