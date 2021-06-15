@@ -11,13 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+    - uses: google-github-actions/deploy-cloud-functions@main
       with:
-        version: '275.0.0'
-        service_account_key: ${{ secrets.GCLOUD_AUTH }}
-    - run: gcloud functions deploy ${{ secrets.CF_NAME }} --project=${{ secrets.CF_PROJECT }} --region=${{ secrets.CF_REGION }}
-          --entry-point=Handle --runtime=go113 --trigger-http --memory=128M
-          --format='yaml(status,updateTime,versionId)'
+        name: ${{ secrets.CF_NAME }}
+        region: ${{ secrets.CF_REGION }}
+        project_id: ${{ secrets.CF_PROJECT }}
+        runtime: go113
+        entry_point: "Handle"
+        credentials: ${{ secrets.GCLOUD_AUTH }}
     - name: Post status to Zulip
       if: ${{ always() }}
       uses: containrrr/shoutrrr-action@v1
