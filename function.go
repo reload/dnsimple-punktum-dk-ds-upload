@@ -126,6 +126,24 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	}
 
 	log.Printf("Successful update of DS records for %q: %s", config.Domain, resp)
-	notify.Send(fmt.Sprintf("Successful update of DS records for %q: %s", config.Domain, resp), nil)
+
+	errors := notify.Send(fmt.Sprintf("Successful update of DS records for %q: %s", config.Domain, resp), nil)
+	if countErrors(errors) > 0 {
+		log.Printf("Could not send Shoutrrr status: %v", err)
+	}
+
 	_, _ = w.Write(resp)
+}
+
+// countErrors but not nils.
+func countErrors(slice []error) int {
+	i := 0
+
+	for _, elem := range slice {
+		if elem != nil {
+			i++
+		}
+	}
+
+	return i
 }
