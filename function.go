@@ -36,14 +36,12 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 
 	services, _ := notifyConfig()
 	notify, err := shoutrrr.CreateSender(services.Services...)
-
 	if err != nil {
 		log.Printf("Error creating notification sender(s): %s", err.Error())
 	}
 
 	defer r.Body.Close()
 	payload, err := ioutil.ReadAll(r.Body)
-
 	if err != nil {
 		log.Printf("Could not parse webhook payload: %s", err.Error())
 		notify.Send(fmt.Sprintf("Could not parse webhook payload: %s", err.Error()), nil)
@@ -83,7 +81,6 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	}
 
 	config, err := envConfig(dnssecEvent.DelegationSignerRecord.DomainID)
-
 	if err != nil {
 		log.Printf("No DK Hostmaster / DNSimple config for %d: %s", dnssecEvent.DelegationSignerRecord.DomainID, err.Error())
 		// It's OK if there is no configuration. It could be a
@@ -101,7 +98,6 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	}
 
 	records, err := dsRecords(config.DnsimpleToken, config.Domain)
-
 	if err != nil {
 		log.Printf("Could not get DS records from DNSimple for %q: %s", config.Domain, err.Error())
 		notify.Send(fmt.Sprintf("Could not get DS records from DNSimple for %q: %s", config.Domain, err.Error()), nil)
@@ -116,7 +112,6 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	defer cancel()
 
 	resp, err := client.Update(ctx, records)
-
 	if err != nil {
 		log.Printf("Could not update DS records for %q: %s", config.Domain, err.Error())
 		notify.Send(fmt.Sprintf("Could not update DS records for %q: %s", config.Domain, err.Error()), nil)
@@ -126,6 +121,24 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	}
 
 	log.Printf("Successful update of DS records for %q: %s", config.Domain, resp)
-	notify.Send(fmt.Sprintf("Successful update of DS records for %q: %s", config.Domain, resp), nil)
+
+	errors := notify.Send(fmt.Sprintf("Successful update of DS records for %q: %s", config.Domain, resp), nil)
+	if countErrors(errors) > 0 {
+		log.Printf("Could not send Shoutrrr status: %v", err)
+	}
+
 	_, _ = w.Write(resp)
+}
+
+// countErrors but not nils.
+func countErrors(slice []error) int {
+	i := 0
+
+	for _, elem := range slice {
+		if elem != nil {
+			i++
+		}
+	}
+
+	return i
 }
