@@ -19,6 +19,7 @@ jobs:
         runtime: go113
         entry_point: "Handle"
         credentials: ${{ secrets.GCLOUD_AUTH }}
+        env_vars: 247964_DOMAIN=${{ secrets.X_247964_DOMAIN }},247964_PASSWORD=${{ secrets.X_247964_PASSWORD }},247964_USERID=${{ secrets.X_247964_USERID }},TOKEN=${{ secrets.TOKEN }},DNSIMPLE_TOKEN=${{ secrets.DNSIMPLE_TOKEN }},NOTITY=${{ secrets.NOTITY }}
     - name: Post status to Zulip
       if: ${{ always() }}
       uses: containrrr/shoutrrr-action@v1
