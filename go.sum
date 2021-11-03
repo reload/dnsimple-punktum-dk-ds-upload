@@ -3,8 +3,8 @@ arnested.dk/go/dsupdate v1.0.21/go.mod h1:LNcR66DBw53+SOkssIJrzfbmRlECWT+EkS6cBW
 cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/containrrr/shoutrrr v0.0.0-20200601130819-941635456201 h1:4msSLyv018POHrIpJf+V5wKtaVivW/HzFzsKNk7jZXI=
 github.com/containrrr/shoutrrr v0.0.0-20200601130819-941635456201/go.mod h1:eotQeC9bHbsf9eMUnXOU/y5bskegseWNB4PwmxRO7Wc=
-github.com/dnsimple/dnsimple-go v0.71.0 h1:9I3WDsSNAUxtnXeqvJD3KcdJWdiOb9rowebY2a+R/s4=
-github.com/dnsimple/dnsimple-go v0.71.0/go.mod h1:F9WHww9cC76hrnwGFfAfrqdW99j3MOYasQcIwTS/aUk=
+github.com/dnsimple/dnsimple-go v0.71.1 h1:1hGoBA3CIjpjZj5DM3081xfxr4e2jYmYnkO2VuBF8Qc=
+github.com/dnsimple/dnsimple-go v0.71.1/go.mod h1:F9WHww9cC76hrnwGFfAfrqdW99j3MOYasQcIwTS/aUk=
 github.com/fatih/color v1.7.0 h1:DkWD4oS2D8LGGgTQ6IvwJJXSL5Vp2ffcQg58nFV38Ys=
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/fsnotify/fsnotify v1.4.7 h1:IXs+QLmnXW2CcXuY+8Mzv/fWEsPGWxqefPtCP5CnV9I=
