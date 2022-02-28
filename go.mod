@@ -1,7 +1,7 @@
 module github.com/reload/dnsimple-dk-hostmaster-ds-upload
 
 require (
-	arnested.dk/go/dsupdate v1.0.23
+	arnested.dk/go/dsupdate v1.0.24
 	github.com/containrrr/shoutrrr v0.0.0-20200601130819-941635456201
 	github.com/dnsimple/dnsimple-go v0.71.1
 	github.com/golang/protobuf v1.3.2 // indirect
