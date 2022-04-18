@@ -1,7 +1,7 @@
 module github.com/reload/dnsimple-dk-hostmaster-ds-upload
 
 require (
-	arnested.dk/go/dsupdate v1.0.27
+	arnested.dk/go/dsupdate v1.0.28
 	github.com/containrrr/shoutrrr v0.5.3
 	github.com/dnsimple/dnsimple-go v0.71.1
 	github.com/fatih/color v1.13.0 // indirect
