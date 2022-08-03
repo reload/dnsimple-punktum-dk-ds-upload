@@ -11,14 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: google-github-actions/deploy-cloud-functions@main
+    - uses: google-github-actions/auth@v0
+      with:
+        credentials_json: '${{ secrets.GCLOUD_AUTH }}'
+    - uses: google-github-actions/deploy-cloud-functions@v0
       with:
         name: ${{ secrets.CF_NAME }}
         region: ${{ secrets.CF_REGION }}
         project_id: ${{ secrets.CF_PROJECT }}
-        runtime: go113
+        runtime: go116
         entry_point: "Handle"
-        credentials: ${{ secrets.GCLOUD_AUTH }}
         env_vars: 247964_DOMAIN=${{ secrets.X_247964_DOMAIN }},247964_PASSWORD=${{ secrets.X_247964_PASSWORD }},247964_USERID=${{ secrets.X_247964_USERID }},TOKEN=${{ secrets.TOKEN }},DNSIMPLE_TOKEN=${{ secrets.DNSIMPLE_TOKEN }},NOTIFY=${{ secrets.NOTIFY }}
     - name: Post status to Zulip
       if: ${{ always() }}

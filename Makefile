@@ -1,7 +1,7 @@
 .PHONY: doc test check-env deploy logs post-fixture
 
 ENTRY_POINT=Handle
-RUNTIME=go113
+RUNTIME=go116
 MEMORY=128M
 
 # Include a .env file if it exists (getting NAME, PROJECT, and REGION).

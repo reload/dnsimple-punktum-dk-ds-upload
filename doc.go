@@ -1,5 +1,4 @@
 /*
-
 Package function is a Google Cloud Function receiving webhook events
 from DNSimple (https://dnsimple.com/webhooks).
 
@@ -29,7 +28,6 @@ self service.
 
 `123456_PASSWORD`: the DK Hostmaster password you use to login to
 their self service.
-
 */
 package function
 
