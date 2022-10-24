@@ -3,7 +3,7 @@ package function
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"time"
@@ -41,7 +41,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	}
 
 	defer r.Body.Close()
-	payload, err := ioutil.ReadAll(r.Body)
+	payload, err := io.ReadAll(r.Body)
 	if err != nil {
 		log.Printf("Could not parse webhook payload: %s", err.Error())
 		notify.Send(fmt.Sprintf("Could not parse webhook payload: %s", err.Error()), nil)
