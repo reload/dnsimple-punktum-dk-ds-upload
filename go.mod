@@ -3,7 +3,7 @@ module github.com/reload/dnsimple-dk-hostmaster-ds-upload
 require (
 	arnested.dk/go/dsupdate v1.7.0
 	github.com/containrrr/shoutrrr v0.7.1
-	github.com/dnsimple/dnsimple-go v1.0.1
+	github.com/dnsimple/dnsimple-go v1.1.0
 	github.com/jimmyfrasche/autoreadme v0.0.0-20210809222737-8f1c593357f8
 	github.com/kelseyhightower/envconfig v1.4.0
 	golang.org/x/oauth2 v0.5.0
