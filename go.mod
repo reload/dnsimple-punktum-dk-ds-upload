@@ -6,7 +6,7 @@ require (
 	github.com/dnsimple/dnsimple-go v1.2.0
 	github.com/jimmyfrasche/autoreadme v0.0.0-20210809222737-8f1c593357f8
 	github.com/kelseyhightower/envconfig v1.4.0
-	golang.org/x/oauth2 v0.10.0
+	golang.org/x/oauth2 v0.11.0
 )
 
 require (
@@ -16,8 +16,8 @@ require (
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect
 	golang.org/x/mod v0.12.0 // indirect
-	golang.org/x/net v0.12.0 // indirect
-	golang.org/x/sys v0.10.0 // indirect
+	golang.org/x/net v0.14.0 // indirect
+	golang.org/x/sys v0.11.0 // indirect
 	golang.org/x/tools v0.11.1 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
