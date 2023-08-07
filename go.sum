@@ -1,5 +1,5 @@
-arnested.dk/go/dsupdate v1.11.0 h1:BAc2gZLV11ORZI8Ek5DItp56EXxuxKbdxMUh2YE/aOo=
-arnested.dk/go/dsupdate v1.11.0/go.mod h1:NhaHY5t7nF3T/DRjCaJv4djh/WbwTIH9xKhQS2k+Opw=
+arnested.dk/go/dsupdate v1.11.1 h1:cqas31oouzg2kGPOpfa85S7/DCOhMC+S8PNZjWG6DB8=
+arnested.dk/go/dsupdate v1.11.1/go.mod h1:NhaHY5t7nF3T/DRjCaJv4djh/WbwTIH9xKhQS2k+Opw=
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 cloud.google.com/go v0.38.0/go.mod h1:990N+gfupTy94rShfmMCWGDn0LpTmnzTp2qbd1dvSRU=
