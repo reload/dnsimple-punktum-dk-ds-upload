@@ -2,7 +2,7 @@ module github.com/reload/dnsimple-dk-hostmaster-ds-upload
 
 require (
 	arnested.dk/go/dsupdate v1.12.3
-	github.com/containrrr/shoutrrr v0.7.1
+	github.com/containrrr/shoutrrr v0.8.0
 	github.com/dnsimple/dnsimple-go v1.2.1
 	github.com/jimmyfrasche/autoreadme v0.0.0-20210809222737-8f1c593357f8
 	github.com/kelseyhightower/envconfig v1.4.0
@@ -10,7 +10,7 @@ require (
 )
 
 require (
-	github.com/fatih/color v1.13.0 // indirect
+	github.com/fatih/color v1.15.0 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
