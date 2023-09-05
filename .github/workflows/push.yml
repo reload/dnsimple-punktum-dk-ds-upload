@@ -9,7 +9,7 @@ jobs:
     name: Build and test
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: arnested/go-version-action@v1
       id: version
     - name: Setup Go ${{ steps.version.outputs.go-mod-version }}.x
