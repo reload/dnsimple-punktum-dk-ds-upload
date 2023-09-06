@@ -1,5 +1,5 @@
-arnested.dk/go/dsupdate v1.12.3 h1:eYAI2t/JsPpTTyOaVKIGKE5Jq3QHbRIZtb3pJgs8e/E=
-arnested.dk/go/dsupdate v1.12.3/go.mod h1:Ae5uDg+0uoH+L/phQfNYniZKcKZerROZZgEKyqy0tD4=
+arnested.dk/go/dsupdate v1.12.4 h1:gSMncKXIuldQmB7BDOcPIV2YJXu/jHpzlnqsiwyRJ7Q=
+arnested.dk/go/dsupdate v1.12.4/go.mod h1:Ae5uDg+0uoH+L/phQfNYniZKcKZerROZZgEKyqy0tD4=
 github.com/containrrr/shoutrrr v0.8.0 h1:mfG2ATzIS7NR2Ec6XL+xyoHzN97H8WPjir8aYzJUSec=
 github.com/containrrr/shoutrrr v0.8.0/go.mod h1:ioyQAyu1LJY6sILuNyKaQaw+9Ttik5QePU8atnAdO2o=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
