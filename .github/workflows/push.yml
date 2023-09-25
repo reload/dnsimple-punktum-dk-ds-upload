@@ -13,7 +13,7 @@ jobs:
     - uses: arnested/go-version-action@v1
       id: version
     - name: Setup Go ${{ steps.version.outputs.go-mod-version }}.x
-      uses: WillAbides/setup-go-faster@v1.11.0
+      uses: WillAbides/setup-go-faster@v1.12.0
       with:
         go-version: ${{ steps.version.outputs.go-mod-version }}.x
         ignore-local: true
