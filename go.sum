@@ -3,8 +3,8 @@ arnested.dk/go/dsupdate v1.15.1/go.mod h1:7j7arabkqDIZzhwOM7sSFsdktzcPNeimBa7xOX
 github.com/containrrr/shoutrrr v0.8.0 h1:mfG2ATzIS7NR2Ec6XL+xyoHzN97H8WPjir8aYzJUSec=
 github.com/containrrr/shoutrrr v0.8.0/go.mod h1:ioyQAyu1LJY6sILuNyKaQaw+9Ttik5QePU8atnAdO2o=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
-github.com/dnsimple/dnsimple-go v1.5.0 h1:NtiaBCl+Y73ERflVYC2mjxemqoGbZZu6Enf5/vfvKGk=
-github.com/dnsimple/dnsimple-go v1.5.0/go.mod h1:fxTVOUu8VGT5Yi5q53uUnG2gP35qYuEV+QtAVN9upWU=
+github.com/dnsimple/dnsimple-go v1.5.1 h1:zr7OJgQBfS8kJJGMRpcXC6DEeKErR71aNogCMnWGawU=
+github.com/dnsimple/dnsimple-go v1.5.1/go.mod h1:QWFwNXg2hV2PrGQE9b69Ig6UwHyIOxQRrECmVvaugss=
 github.com/fatih/color v1.15.0 h1:kOqh6YHBtK8aywxGerMG2Eq3H6Qgoqeo13Bk2Mv/nBs=
 github.com/fatih/color v1.15.0/go.mod h1:0h5ZqXfHYED7Bhv2ZJamyIOUej9KtShiJESRwBDUSsw=
 github.com/go-logr/logr v1.2.3 h1:2DntVwHkVopvECVRSlL5PSo9eG+cAkDCuckLubN+rq0=
