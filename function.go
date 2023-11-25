@@ -22,7 +22,8 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 
-	if !isAuthorized(r.URL.Query().Get("token")) {
+	query := r.URL.Query()
+	if (query == nil) || !isAuthorized(query.Get("token")) {
 		http.Error(w, http.StatusText(http.StatusUnauthorized), http.StatusUnauthorized)
 
 		return
@@ -51,15 +52,14 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 	}
 
 	event, err := webhook.ParseEvent(payload)
-
-	log.Printf("Processing DNSimple event with request ID %q", event.RequestID)
-
 	if err != nil {
 		log.Printf("Could not parse webhook name: %s", err.Error())
 		notify.Send(fmt.Sprintf("Could not parse webhook name: %s", err.Error()), nil)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+
+	log.Printf("Processing DNSimple event with request ID %q", event.RequestID)
 
 	if event.Name != "dnssec.rotation_start" && event.Name != "dnssec.rotation_complete" {
 		log.Printf("Not a rotation event: %s", event.Name)
