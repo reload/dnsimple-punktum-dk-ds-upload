@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v4
     - uses: arnested/go-version-action@v1
       id: version
-    - run: echo ::set-output name=go-runtime::$(echo -n go${{ steps.version.outputs.go-mod-version }} | tr -d '.')
+    - run: echo name=go-runtime::$(echo -n go${{ steps.version.outputs.go-mod-version }} | tr -d '.') >> $GITHUB_OUTPUT
       id: runtime
     - uses: google-github-actions/auth@v2
       with:
