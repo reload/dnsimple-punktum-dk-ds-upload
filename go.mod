@@ -1,4 +1,4 @@
-module github.com/reload/dnsimple-dk-hostmaster-ds-upload
+module github.com/reload/dnsimple-punktum-dk-ds-upload
 
 require (
 	arnested.dk/go/dsupdate v1.16.5
