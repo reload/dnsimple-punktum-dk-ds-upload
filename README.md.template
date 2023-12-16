@@ -1,6 +1,6 @@
 # DNSimple Punktum DS upload
 
-[![GoDoc](https://godoc.org/github.com/reload/dnsimple-dk-hostmaster-ds-upload?status.svg)](https://godoc.org/github.com/reload/dnsimple-dk-hostmaster-ds-upload)
+[![Go reference](https://pkg.go.dev/badge/github.com/reload/dnsimple-punktum-dk-ds-upload)](https://pkg.go.dev/github.com/reload/dnsimple-punktum-dk-ds-upload)
 
 {{ .Doc }}
 
