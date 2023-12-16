@@ -82,11 +82,11 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 
 	config, err := envConfig(dnssecEvent.DelegationSignerRecord.DomainID)
 	if err != nil {
-		log.Printf("No DK Hostmaster / DNSimple config for %d: %s", dnssecEvent.DelegationSignerRecord.DomainID, err.Error())
+		log.Printf("No Punktum.dk / DNSimple config for %d: %s", dnssecEvent.DelegationSignerRecord.DomainID, err.Error())
 		// It's OK if there is no configuration. It could be a
-		// domain not handled by DK Hostmaster and/or DNSSEC.
-		// We send a 200 OK so DNSimple will not retry.
-		http.Error(w, "Missing DK Hostmaster / DNSimple credentials config", http.StatusOK)
+		// domain not handled by Punktum.dk and/or DNSSEC.  We
+		// send a 200 OK so DNSimple will not retry.
+		http.Error(w, "Missing Punktum.dk / DNSimple credentials config", http.StatusOK)
 
 		return
 	}
