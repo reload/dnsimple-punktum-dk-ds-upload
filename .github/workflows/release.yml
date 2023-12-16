@@ -15,36 +15,16 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: arnested/go-version-action@v1
-      id: go-version
+      id: version
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.67.0
-      id: new-version
       env:
         GITHUB_TOKEN: ${{ github.token }}
         WITH_V: true
         DEFAULT_BUMP: patch
         DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         RELEASE_BRANCHES: main
-    - name: Create release
-      uses: actions/github-script@v7
-      env:
-        RELEASE_TAG: ${{ steps.new-version.outputs.next }}
-      with:
-        script: |
-          try {
-            await github.rest.repos.createRelease({
-              draft: false,
-              generate_release_notes: true,
-              name: process.env.RELEASE_TAG,
-              owner: context.repo.owner,
-              prerelease: false,
-              repo: context.repo.repo,
-              tag_name: process.env.RELEASE_TAG,
-            });
-          } catch (error) {
-            core.setFailed(error.message);
-          }
-    - run: echo "go-runtime=$(echo -n go${{ steps.go-version.outputs.go-mod-version }} | tr -d '.')" >> $GITHUB_OUTPUT
+    - run: echo "go-runtime=$(echo -n go${{ steps.version.outputs.go-mod-version }} | tr -d '.')" >> $GITHUB_OUTPUT
       id: runtime
     - uses: google-github-actions/auth@v2
       with:
