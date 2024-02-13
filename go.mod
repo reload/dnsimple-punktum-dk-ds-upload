@@ -1,7 +1,7 @@
 module github.com/reload/dnsimple-punktum-dk-ds-upload
 
 require (
-	arnested.dk/go/dsupdate v1.17.3
+	arnested.dk/go/dsupdate v1.17.4
 	github.com/containrrr/shoutrrr v0.8.0
 	github.com/dnsimple/dnsimple-go v1.6.0
 	github.com/jimmyfrasche/autoreadme v0.0.0-20210809222737-8f1c593357f8
