@@ -1,7 +1,7 @@
 module github.com/reload/dnsimple-punktum-dk-ds-upload
 
 require (
-	arnested.dk/go/dsupdate v1.20.1
+	arnested.dk/go/dsupdate v1.21.1
 	github.com/containrrr/shoutrrr v0.8.0
 	github.com/dnsimple/dnsimple-go v1.7.0
 	github.com/jimmyfrasche/autoreadme v0.0.0-20210809222737-8f1c593357f8
@@ -17,9 +17,9 @@ require (
 	github.com/shopspring/decimal v1.3.1 // indirect
 	golang.org/x/mod v0.17.0 // indirect
 	golang.org/x/sync v0.7.0 // indirect
-	golang.org/x/sys v0.19.0 // indirect
+	golang.org/x/sys v0.20.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
-	golang.org/x/tools v0.20.0 // indirect
+	golang.org/x/tools v0.21.0 // indirect
 	google.golang.org/protobuf v1.33.0 // indirect
 )
 
