@@ -6,7 +6,7 @@ require (
 	github.com/dnsimple/dnsimple-go v1.7.0
 	github.com/jimmyfrasche/autoreadme v0.0.0-20210809222737-8f1c593357f8
 	github.com/kelseyhightower/envconfig v1.4.0
-	golang.org/x/oauth2 v0.21.0
+	golang.org/x/oauth2 v0.22.0
 )
 
 require (
