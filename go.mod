@@ -1,3 +1,4 @@
+// Deprecated: Punktum.dk has closed the DS-update Service, see https://punktum.dk/artikler/breaking-changes
 module github.com/reload/dnsimple-punktum-dk-ds-upload
 
 require (
