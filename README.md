@@ -1,5 +1,9 @@
 # DNSimple Punktum DS upload
 
+> [!IMPORTANT]
+> Deprecated: Punktum.dk has closed the DS-update Service, see
+> <https://punktum.dk/artikler/breaking-changes>
+
 [![Go reference](https://pkg.go.dev/badge/github.com/reload/dnsimple-punktum-dk-ds-upload)](https://pkg.go.dev/github.com/reload/dnsimple-punktum-dk-ds-upload)
 
 Package function is a Google Cloud Function receiving webhook events
